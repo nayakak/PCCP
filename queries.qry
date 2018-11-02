@@ -1,0 +1,41 @@
+query selectUserWithBuyerGroup {
+  description: "Select Buyers based on type"
+  statement:
+      SELECT org.kindlebit.com.Users
+          WHERE (user_type == 2)
+}
+
+query selectUserByUserType {
+  description: "Select Buyers based on type"
+  statement:
+      SELECT org.kindlebit.com.Users
+          WHERE (user_type == _$user_type)
+}
+
+query selectUser {
+  description: "Select all users with username or email"
+  statement:
+      SELECT org.kindlebit.com.Users
+          WHERE ((userName ==_$user) OR (Email == _$email))
+}
+
+query selectUserForLogin {
+  description: "Select all with user and email"
+  statement:
+      SELECT org.kindlebit.com.Users
+          WHERE ((userName ==_$user) AND (Email == _$email))
+}
+
+query selectAgent {
+  description: "Select agent for login"
+  statement:
+      SELECT org.kindlebit.com.Users
+          WHERE ((userName ==_$user) AND (Password == _$password) AND (user_type == 2))
+}
+
+query selectPropertyByUserId {
+  description: "Select all with userid"
+  statement:
+      SELECT org.kindlebit.com.LandTitle
+          WHERE (ownerId ==_$id) 
+}
